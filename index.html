@@ -1,1 +1,129 @@
-<script src="script.js" defer></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Selector</title>
+    <style>
+      :root {
+        --bg: #ffffff;
+        --fg: #111111;
+        --accent: #2e7d32;
+        --card: #f4f4f4;
+      }
+
+      [data-theme="dark"] {
+        --bg: #121212;
+        --fg: #e0e0e0;
+        --accent: #81c784;
+        --card: #1e1e1e;
+      }
+
+      body {
+        background-color: var(--bg);
+        color: var(--fg);
+        font-family: system-ui, sans-serif;
+        margin: 0 auto;
+        max-width: 700px;
+        padding: 2em;
+        line-height: 1.6;
+      }
+
+      h1, h2 {
+        color: var(--accent);
+      }
+
+      label {
+        font-weight: bold;
+        display: block;
+        margin-top: 1.5em;
+      }
+
+      input[type="number"], input[type="file"] {
+        width: 100%;
+        padding: 0.5em;
+        margin-top: 0.5em;
+        background: var(--card);
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        color: var(--fg);
+      }
+
+      button {
+        margin-top: 1.5em;
+        padding: 0.6em 1.2em;
+        font-size: 1em;
+        color: var(--bg);
+        background: var(--accent);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      button:hover {
+        opacity: 0.9;
+      }
+
+      #output {
+        margin-top: 2em;
+      }
+
+      .recipe-card {
+        background: var(--card);
+        padding: 1em;
+        border-radius: 8px;
+        margin-bottom: 1em;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      }
+
+      .recipe-card strong {
+        display: block;
+        font-size: 1.1em;
+      }
+
+      .theme-toggle {
+        float: right;
+        font-size: 0.9em;
+        background: none;
+        border: none;
+        color: var(--accent);
+        cursor: pointer;
+      }
+    </style>
+  </head>
+
+  <body>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 Toggle Theme</button>
+    <h1>Recipe Selector</h1>
+
+    <label>
+      Upload recipe CSV:
+      <input type="file" id="fileInput" accept=".csv">
+    </label>
+
+    <label>
+      Number of meat recipes:
+      <input type="number" id="meatCount" value="2">
+    </label>
+
+    <label>
+      Number of fish recipes:
+      <input type="number" id="fishCount" value="1">
+    </label>
+
+    <label>
+      Recipes should be older than (weeks):
+      <input type="number" id="threshold" value="5">
+    </label>
+
+    <button id="selectBtn" style="display:none;">Select Menu</button>
+    <button id="downloadBtn" style="display:none;">Download CSV</button>
+    <button id="viewToggleBtn" style="display:none;">View All Recipes</button>
+
+    <h2 id="tableHeader" style="display:none;">Selected Recipes</h2>
+    <div id="output"></div>
+
+
+    <script src="script.js"></script>
+  </body>
+</html>
