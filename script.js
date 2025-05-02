@@ -65,7 +65,8 @@ document.getElementById('selectBtn').addEventListener('click', () => {
 // --- Download Button: Save CSV or full recipe list ---
 document.getElementById('downloadBtn').addEventListener('click', () => {
   const header = "name,type,last_used";
-  const rows = recipes.map(r =>
+  const full = localStorage.getItem("fullRecipes");
+  const rows = full.map(r =>
     [r.name, r.type, r.last_used].join(',')
   );
   const csv = [header, ...rows].join("\n");
