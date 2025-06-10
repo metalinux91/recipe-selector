@@ -65,7 +65,7 @@ document.getElementById('selectBtn').addEventListener('click', () => {
 // --- Download Button: Save CSV or full recipe list ---
 document.getElementById('downloadBtn').addEventListener('click', () => {
   const header = "name,type,last_used";
-  const full = localStorage.getItem("fullRecipes");
+  const full = JSON.parse(localStorage.getItem("fullRecipes"));
   const rows = full.map(r =>
     [r.name, r.type, r.last_used].join(',')
   );
@@ -76,7 +76,7 @@ document.getElementById('downloadBtn').addEventListener('click', () => {
 
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'update_recipes.csv';
+  a.download = 'updated_recipes.csv';
   a.click();
   URL.revokeObjectURL(url);
 });
